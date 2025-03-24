@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="login.php">
+</head>
+<body>
+
+    <div class="box">
+      <h1>LOGIN</h1>
+
+      <form id="loginForm">
+        
+        <div class="input_box">
+            <label for="email">Email Address</label>
+            <input type="text" id="loginEmail" name="email" required>
+        </div>
+
+        <div class="input_box">
+            <label for="password">Password</label>
+            <input type="text" id="loginPassword" name="password" required>
+        </div>
+
+        <div class="sub_btn">
+            <button type="submit">Login</button>
+        </div>
+
+      </form>
+
+      <p>Don't have an account? <a href="Register.html">Register Now</a></p>
+      
+    </div>
+
+<script src="firebase-config.js"></script>
+
+<script>
+
+  document.getElementById("loginForm").addEventListener("submit", function(e){
+
+    e.defaultPrevented();
+
+    const email = document.getElementById("loginEmail");
+    const password = document.getElementById("loginPassword");
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+
+    .then(()=>{
+      alert("Login Succesful");
+      window.location = "kays.html";
+    })
+    .catch(error=>alert(error.message));
+
+  });
+
+
+
+</script>
+
+
+    
+</body>
+</html>

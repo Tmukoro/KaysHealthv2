@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="Register.css">
+</head>
+<body>
+
+    <div class="box">
+      <h1>REGISTRATION</h1>
+
+      <form id="registerForm">
+        
+        <div class="input_box">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="input_box">
+            <label for="password">Password</label>
+            <input type="text" id="password" name="password" required>
+        </div>
+
+        <div class="sub_btn">
+            <button type="submit">Register</button>
+        </div>
+
+      </form>
+
+
+      <p>Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+
+    <script src="firebase-config.js"></script>
+
+    <script>
+        document.getElementById("registerForm").addEventListener(("submit"), function(e){
+
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            firebase.auth().createUserWithEmailAndPassword(email,password)
+            .then(()=>{
+                alert("Registration Succesful");
+                window.location.href = "login.html";
+            })
+            .catch(error=> alert(error.message));
+        });
+    </script>
+
+
+    
+</body>
+</html>
