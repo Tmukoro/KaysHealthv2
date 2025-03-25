@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
     <link rel="stylesheet" href="Register.css">
+    <script type="module" src="Register.js" defer></script>
 </head>
 <body>
 
@@ -33,24 +34,6 @@
       <p>Already have an account? <a href="login.html">Log in</a></p>
     </div>
 
-    <script src="firebase-config.js"></script>
-
-    <script>
-        document.getElementById("registerForm").addEventListener("submit", function(e){
-
-            e.preventDefault();
-
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            firebase.auth().createUserWithEmailAndPassword(email,password)
-            .then(()=>{
-                alert("Registration Succesful");
-                window.location.href = "login.html";
-            })
-            .catch(error=> alert(error.message));
-        });
-    </script>
 
 
     
