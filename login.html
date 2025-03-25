@@ -6,6 +6,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="login.php">
+    <script type="module" src="login.js" defer></script>
 </head>
 <body>
 
@@ -35,29 +36,6 @@
     </div>
 
 <script src="firebase-config.js"></script>
-
-<script>
-
-  document.getElementById("loginForm").addEventListener("submit", function(e){
-
-    e.defaultPrevented();
-
-    const email = document.getElementById("loginEmail");
-    const password = document.getElementById("loginPassword");
-
-    firebase.auth().signInWithEmailAndPassword(email, password)
-
-    .then(()=>{
-      alert("Login Succesful");
-      window.location = "kays.html";
-    })
-    .catch(error=>alert(error.message));
-
-  });
-
-
-
-</script>
 
 
     
