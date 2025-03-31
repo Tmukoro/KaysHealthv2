@@ -24,7 +24,7 @@ const firebaseConfig = {
 
     signOut(auth).then(()=>{
         alert("Logging out..")
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     })
 
     .catch((error) =>{
