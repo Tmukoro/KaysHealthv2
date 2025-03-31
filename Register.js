@@ -1,6 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwe_xxKpsKDCteEO8VsfFqx_NpQsOd1N8",
@@ -14,23 +13,24 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 
-const submit = document.getElementById("Submit");
 
-submit.addEventListener("click", function(e){
+const submit = document.getElementById("submit");
+
+submit.addEventListener("click", (e) =>{
   e.preventDefault();
 
-  const email = document.getElementById("email");
-  const password = document.getElementById("password");
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
   const auth = getAuth();
 
   createUserWithEmailAndPassword(auth, email, password)
+
   .then((userCredential) =>{
     const user = userCredential.user;
-    alert("Registering....")
+    alert("Registering....");
     window.location.href = "login.html";
   })
 
@@ -38,7 +38,7 @@ submit.addEventListener("click", function(e){
     const errorCode = error.code;
     const errorMessage = error.message;
     alert(errorMessage);
-  })
+  });
 
 })
 

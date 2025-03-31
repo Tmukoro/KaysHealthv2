@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
 
 
@@ -15,22 +15,16 @@ const firebaseConfig = {
 
   const app = initializeApp(firebaseConfig);
 
-const submit = document.getElementById("submit");
 
-submit.addEventListener("click", (e)=> {
+  const logoutBtn = document.getElementById("logoutBtn");
 
-    e.preventDefault();
-
-    const email = document.getElementById("loginEmail").value; 
-    const password = document.getElementById("loginPassword").value;
+  logoutBtn.addEventListener("click", ()=>{
 
     const auth = getAuth();
 
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) =>{
-        const user = userCredential.user;
-        alert("logging in...");
-        window.location.href = "kays.html";
+    signOut(auth).then(()=>{
+        alert("Logging out..")
+        window.location.href = "login.html";
     })
 
     .catch((error) =>{
@@ -38,8 +32,6 @@ submit.addEventListener("click", (e)=> {
         const errorMessage = error.message;
         alert(errorMessage);
     });
-})
 
 
-
-
+  })
