@@ -1,6 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
 
 
@@ -15,15 +14,15 @@ const firebaseConfig = {
   };
 
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
 
 const submit = document.getElementById("submit");
 
-submit.addEventListener("click", function(e){
+submit.addEventListener("click", (e)=> {
+
     e.preventDefault();
 
-    const email = document.getElementById("loginEmail");
-    const password = document.getElementById("loginPassword");
+    const email = document.getElementById("loginEmail").value; 
+    const password = document.getElementById("loginPassword").value;
 
     const auth = getAuth();
 
@@ -36,11 +35,34 @@ submit.addEventListener("click", function(e){
 
     .catch((error) =>{
         const errorCode = error.code;
-        const errorMessage = error.message;
+        const errorMessage = "Invalid Email or Password";
         alert(errorMessage);
     });
 })
 
+
+
+const visbtn = document.getElementById("visibtn");
+
+password.addEventListener("focus", ()=>{
+  visbtn.style.opacity = "100%";
+  visbtn.style.visibility = "visible";
+})
+
+password.addEventListener("blur", ()=>{
+  visbtn.style.opacity = "0%";
+  visbtn.style.visibility = "hidden";
+})
+
+
+
+
+visbtn.addEventListener("click", ()=>{
+
+  var passField = document.getElementById("password");
+
+  passField.type = passField.type === "password" ? "text": "password";
+})
 
 
 

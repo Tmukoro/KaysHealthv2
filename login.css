@@ -47,6 +47,18 @@
     background-color: rgb(253, 76, 106);
 }
 
+.PR{
+    text-align: center;
+}
+
+#visibtn{
+    background-color: white;
+    transition: all 0.2s ease-in-out;
+    opacity: 100%;
+    visibility: visible;
+    border: transparent;
+}
+
 @media screen and (max-width: 420px){
 
     .box{
@@ -55,7 +67,7 @@
     }
 
     .input_box input{
-        width: 95%;
+        width: 85%;
     }
 
     .box p{
@@ -73,7 +85,7 @@
     }
 
     .input_box input{
-        width: 95%;
+        width: 90%;
     }
 
     .box p{
@@ -91,7 +103,7 @@
     }
 
     .input_box input{
-        width: 95%;
+        width: 90%;
     }
 
     .box p{
